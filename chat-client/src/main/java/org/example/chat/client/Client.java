@@ -2,18 +2,23 @@ package org.example.chat.client;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Client {
 
     private final Socket socket;
-    private final String username;
+    private int id;
+    private static int nextId = 1;
+    private final static HashMap<Integer, String> clients = new HashMap<>();
     private BufferedWriter bufferedWriter;
     private BufferedReader bufferedReader;
 
     public Client(Socket socket, String username) throws IOException {
         this.socket = socket;
-        this.username = username;
+        id = nextId++;
+        System.out.println("Ваш ID: " + id);
+        clients.put(id, username);
         try {
             bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
             bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -42,17 +47,18 @@ public class Client {
 
     public void sendMessage() throws IOException {
         try {
-            bufferedWriter.write(username);
+            bufferedWriter.write(clients.get(id));
             bufferedWriter.newLine();
             bufferedWriter.flush();
 
             Scanner scanner = new Scanner(System.in);
             while (socket.isConnected()) {
                 String message = scanner.nextLine();
-                String[] chars = message.split("");
-                bufferedWriter.write(username + ": " + message);
-                bufferedWriter.newLine();
-                bufferedWriter.flush();
+                if (message != "" && message != null) {
+                    bufferedWriter.write(clients.get(id) + "(id: " + id + "):" + message);
+                    bufferedWriter.newLine();
+                    bufferedWriter.flush();
+                }
             }
         } catch (IOException e) {
             closeEverything(socket, bufferedReader, bufferedWriter);

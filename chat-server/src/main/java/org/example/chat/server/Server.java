@@ -17,7 +17,6 @@ public class Server {
             try {
                 Socket socket = serverSocket.accept();
                 ClientManager clientManager = new ClientManager(socket);
-                System.out.println("Подключился новый клиент");
                 Thread thread = new Thread(clientManager);
                 thread.start();
             } catch (IOException e) {

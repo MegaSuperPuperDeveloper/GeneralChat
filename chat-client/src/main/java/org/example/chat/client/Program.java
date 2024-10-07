@@ -1,7 +1,6 @@
 package org.example.chat.client;
 
 import java.io.IOException;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
@@ -10,8 +9,11 @@ public class Program {
     public static void main(String[] args) {
         try {
             Scanner scanner = new Scanner(System.in);
-            System.out.print("Введите свое имя: ");
-            String username = scanner.nextLine();
+            String username = "";
+            while (username.isEmpty() || username.split(" ").length == 0 || username.split("")[0].equals(" ")) {
+                System.out.print("Введите свое имя: ");
+                username = scanner.nextLine();
+            }
             Socket socket = new Socket("localhost", 1400);
             Client client = new Client(socket, username);
 

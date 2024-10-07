@@ -1,7 +1,6 @@
 package org.example.chat.server;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.net.Socket;
 import java.util.ArrayList;
 
@@ -10,6 +9,8 @@ public class ClientManager implements Runnable {
     private final Socket socket;
     private BufferedWriter bufferedWriter;
     private BufferedReader bufferedReader;
+    private Integer id;
+    private static Integer nextId = 1;
     private String name;
     public final static ArrayList<ClientManager> clients = new ArrayList<>();
 
@@ -19,9 +20,11 @@ public class ClientManager implements Runnable {
             bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
             name = bufferedReader.readLine();
+            id = nextId;
+            nextId++;
             clients.add(this);
             System.out.println(name + " подключился к чату");
-            broadcastMessage("Server: " + name + " подключился к чату.");
+            broadcastMessage("Server: " + name + "(id: " + id + ")" + " подключился к чату.");
         } catch (IOException e) {
             closeEverything(socket, bufferedReader, bufferedWriter);
         }
@@ -46,7 +49,7 @@ public class ClientManager implements Runnable {
 
     private void broadcastMessage(String message) {
         for (ClientManager clientManager : clients) {
-            if (!clientManager.name.equals(name)) {
+            if (!clientManager.id.equals(id)) {
                 try {
                     clientManager.bufferedWriter.write(message);
                     clientManager.bufferedWriter.newLine();
