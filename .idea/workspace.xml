@@ -4,21 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5f72fbb-3cc2-4f7f-a06f-16e9fd6ac602" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chat-client/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chat-client/src/main/java/org/example/chat/client/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chat-client/src/main/java/org/example/chat/client/Program.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chat-server/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chat-server/src/main/java/org/example/chat/server/ClientManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chat-server/src/main/java/org/example/chat/server/Program.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chat-server/src/main/java/org/example/chat/server/Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+    <list default="true" id="b5f72fbb-3cc2-4f7f-a06f-16e9fd6ac602" name="Changes" comment="Chat group">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat-client/src/main/java/org/example/chat/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat-client/src/main/java/org/example/chat/client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,9 +24,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "MegaSuperPuperDeveloper"
+  }
 }]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/MegaSuperPuperDeveloper/GeneralChat.git",
+    "accountId": "7abd251a-353f-4400-ad1c-0f12354d2df6"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2n48QRt5XYWMejrVWixF72rnakZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -55,7 +56,7 @@
     "Application.Program.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "onboarding.tips.debug.path": "C:/Users/kruto/IdeaProjects/JavaJuniorFinal/chat-server/src/main/java/org/example/Main.java",
     "project.structure.last.edited": "Modules",
@@ -113,6 +114,15 @@
       <option name="presentableId" value="Default" />
       <updated>1728220971536</updated>
     </task>
+    <task id="LOCAL-00001" summary="Chat group">
+      <option name="closed" value="true" />
+      <created>1728313366571</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1728313366571</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -125,6 +135,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Chat group" />
+    <option name="LAST_COMMIT_MESSAGE" value="Chat group" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

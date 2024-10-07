@@ -50,14 +50,9 @@ public class Client {
             while (socket.isConnected()) {
                 String message = scanner.nextLine();
                 String[] chars = message.split("");
-                if (chars[0].equals("/") && chars[1].equals("@") && chars[2].equals(" ")) {
-                    String nameOfRecipient = message.split("")[0];
-                    
-                } else {
-                    bufferedWriter.write(username + ": " + message);
-                    bufferedWriter.newLine();
-                    bufferedWriter.flush();
-                }
+                bufferedWriter.write(username + ": " + message);
+                bufferedWriter.newLine();
+                bufferedWriter.flush();
             }
         } catch (IOException e) {
             closeEverything(socket, bufferedReader, bufferedWriter);
