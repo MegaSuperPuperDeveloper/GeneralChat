@@ -2,23 +2,20 @@ package org.example.chat.client;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class Client {
 
     private final Socket socket;
-    private int id;
-    private static int nextId = 1;
-    private final static HashMap<Integer, String> clients = new HashMap<>();
+    private String username;
     private BufferedWriter bufferedWriter;
     private BufferedReader bufferedReader;
 
     public Client(Socket socket, String username) throws IOException {
         this.socket = socket;
-        id = nextId++;
-        System.out.println("Ваш ID: " + id);
-        clients.put(id, username);
+        this.username = username;
         try {
             bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
             bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -27,6 +24,7 @@ public class Client {
         }
     }
 
+    // Отдельный поток для получения сообщений
     public void listenForMessage() {
         new Thread(new Runnable() {
             @Override
@@ -45,17 +43,18 @@ public class Client {
         }).start();
     }
 
+    // Отправка сообщений
     public void sendMessage() throws IOException {
         try {
-            bufferedWriter.write(clients.get(id));
+            bufferedWriter.write(username);
             bufferedWriter.newLine();
             bufferedWriter.flush();
 
             Scanner scanner = new Scanner(System.in);
             while (socket.isConnected()) {
                 String message = scanner.nextLine();
-                if (message != "" && message != null) {
-                    bufferedWriter.write(clients.get(id) + "(id: " + id + "):" + message);
+                if (!message.isEmpty() && message != null) {
+                    bufferedWriter.write(username + ": " + message);
                     bufferedWriter.newLine();
                     bufferedWriter.flush();
                 }
@@ -65,6 +64,7 @@ public class Client {
         }
     }
 
+    // Закрытие всех потоков
     private void closeEverything(Socket socket, BufferedReader bufferedReader, BufferedWriter bufferedWriter) {
         try {
 
@@ -75,6 +75,10 @@ public class Client {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public String getUsername() {
+        return username;
     }
 
 }

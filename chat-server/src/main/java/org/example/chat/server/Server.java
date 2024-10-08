@@ -12,6 +12,7 @@ public class Server {
         this.serverSocket = serverSocket;
     }
 
+    // Запуск сервера
     public void runServer() throws IOException {
         while (!serverSocket.isClosed()) {
             try {
@@ -26,6 +27,7 @@ public class Server {
         }
     }
 
+    // Закрытие сокета сервера
     public void closeServerSocket() {
         try {
             if (serverSocket != null) serverSocket.close();

@@ -3,6 +3,7 @@ package org.example.chat.client;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Program {
@@ -10,10 +11,12 @@ public class Program {
         try {
             Scanner scanner = new Scanner(System.in);
             String username = "";
-            while (username.isEmpty() || username.split(" ").length == 0 || username.split("")[0].equals(" ")) {
+            while (username.isEmpty() || username.startsWith(" ")) {
                 System.out.print("Введите свое имя: ");
                 username = scanner.nextLine();
             }
+            System.out.println();
+            System.out.println("Для отправки личного сообщения напишите сообщение вида: /@[имя пользователя] [сообщение]");
             Socket socket = new Socket("localhost", 1400);
             Client client = new Client(socket, username);
 
@@ -26,4 +29,5 @@ public class Program {
             e.printStackTrace();
         }
     }
+
 }
